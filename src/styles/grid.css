@@ -1,0 +1,53 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+.card {
+  grid-column: span 6;
+  background: linear-gradient(180deg, #151519, #0f0f12);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.card h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+}
+.card p {
+  margin: 0;
+  color: #d9d9d9;
+}
+.card .tag {
+  position: absolute;
+  right: 16px;
+  top: 14px;
+  font-size: 11px;
+  color: #111;
+  background: var(--brand);
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.card .corner {
+  position: absolute;
+  left: -40px;
+  bottom: -40px;
+  width: 160px;
+  height: 160px;
+  opacity: 0.08;
+}
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 28px;
+  }
+  .card {
+    grid-column: span 12;
+  }
+}
