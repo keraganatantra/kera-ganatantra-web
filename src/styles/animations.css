@@ -1,0 +1,76 @@
+.bg-vector {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.18;
+  width: 100%;
+  height: 100%;
+}
+/* Subtle responsiveness: reduce intensity & motion footprint on smaller screens */
+@media (max-width: 900px) {
+  .bg-vector { opacity: 0.15; }
+  .bg-vector .drift { animation-duration: 30s; }
+}
+@media (max-width: 640px) {
+  .bg-vector { opacity: 0.12; }
+  .bg-vector .drift { animation-duration: 34s; }
+  .bg-vector .drift2 { animation-duration: 46s; }
+}
+@media (max-width: 480px) {
+  .bg-vector { opacity: 0.10; }
+  .bg-vector .drift2 { display: none; } /* hide larger radial orbs for clarity */
+}
+/* ===== Revamped animations ===== */
+.bg-vector .drift { animation: driftFloat 26s ease-in-out infinite; }
+.bg-vector .drift2 { animation: driftSpin 38s linear infinite; }
+
+@keyframes driftFloat {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  25% { transform: translate3d(18px,14px,0) scale(1.01); }
+  50% { transform: translate3d(-10px,28px,0) scale(1.015); }
+  75% { transform: translate3d(8px,12px,0) scale(0.995); }
+}
+@keyframes driftSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  40% { transform: rotate(160deg) scale(1.05); }
+  70% { transform: rotate(260deg) scale(1.02); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.banana-gavel {
+  animation: bananaRockBounce 8.5s cubic-bezier(.46,.03,.52,.96) infinite;
+  transform-origin: 300px 74px;
+  will-change: transform;
+}
+@keyframes bananaRockBounce {
+  0%, 100% { transform: rotate(-6deg) translateY(0) scale(1,1); }
+  10% { transform: rotate(3deg) translateY(-5px) scale(1.02,.98); }
+  22% { transform: rotate(-2deg) translateY(2px) scale(.99,1.01); }
+  36% { transform: rotate(4deg) translateY(-4px) scale(1.015,.985); }
+  52% { transform: rotate(-3deg) translateY(3px) scale(.992,1.008); }
+  70% { transform: rotate(2deg) translateY(-2px) scale(1.01,.99); }
+  85% { transform: rotate(-5deg) translateY(1px) scale(.998,1.002); }
+}
+
+/* Sound lines now pulse outward rather than draw once */
+.sound-lines path {
+  stroke-dasharray: 120;
+  animation: linePulse 4.8s ease-in-out infinite;
+  transform-origin: center left;
+}
+.sound-lines path:nth-child(2) { animation-delay: .6s; }
+.sound-lines path:nth-child(3) { animation-delay: 1.2s; }
+
+@keyframes linePulse {
+  0% { stroke-dashoffset: 120; opacity: 0; transform: scaleX(.6); }
+  15% { opacity: 1; }
+  40% { stroke-dashoffset: 0; opacity: 1; transform: scaleX(1); }
+  70% { opacity: .15; }
+  100% { stroke-dashoffset: 0; opacity: 0; transform: scaleX(1.05); }
+}
+
+/* Prefers-reduced-motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .bg-vector .drift, .bg-vector .drift2, .banana-gavel, .sound-lines path { animation: none !important; }
+}

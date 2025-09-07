@@ -1,0 +1,10 @@
+:root {
+  --bg: #0b0b0c; /* near-black */
+  --fg: #f2f2f2; /* off-white text */
+  --mute: #b3b3b3; /* muted text */
+  --brand: #ffe600; /* protest banana yellow */
+  --accent: #ff3b3b; /* warning red */
+  --card: #141417; /* card surface */
+  --line: #232326; /* hairlines */
+  --success: #2ecc71;
+}
