@@ -7,3 +7,107 @@
   border-radius: 999px;
   border: 1px solid var(--line);
 }
+
+/* Casualty / stats section enhancements */
+.casualty-section {
+  margin-top: 64px;
+  padding: 40px 0 8px;
+  position: relative;
+  --glow: 0 0 0 rgba(255,59,59,0.35);
+}
+.casualty-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 35% 10%, rgba(255,59,59,0.25), transparent 60%),
+    radial-gradient(circle at 70% 20%, rgba(255,179,71,0.18), transparent 65%);
+  opacity: .35;
+  pointer-events: none;
+}
+.casualty-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  position: relative;
+}
+.casualty-title {
+  font-size: clamp(1.9rem,4vw,3rem);
+  background: linear-gradient(90deg,#ff3b3b,#ffb347);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 36px clamp(28px,4vw,56px);
+  margin-top: 32px;
+}
+.stat-card {
+  position: relative;
+  padding: 28px 24px 30px;
+  border: 1px solid var(--line, #2a2a2a);
+  border-radius: 20px;
+  background: linear-gradient(145deg,#141414,#1d1d1f);
+  box-shadow: 0 4px 10px -2px rgba(0,0,0,0.6), inset 0 0 0 1px rgba(255,255,255,0.02);
+  overflow: hidden;
+  transition: border-color .4s, box-shadow .5s, transform .45s;
+  cursor: default;
+}
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 60% 10%, rgba(255,255,255,0.05), transparent 70%);
+  opacity: 0;
+  transition: opacity .6s;
+  pointer-events: none;
+}
+.stat-card:hover::before,.stat-card:focus-visible::before { opacity: 1; }
+.stat-card:hover,.stat-card:focus-visible {
+  border-color: #ff3b3b;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px -6px rgba(0,0,0,0.8),0 0 0 1px rgba(255,59,59,0.4),0 0 24px -4px rgba(255,107,0,0.45);
+}
+.stat-label {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  opacity: .65;
+  margin-bottom: 8px;
+}
+.stat-value {
+  font-size: clamp(4rem,10vw,6.5rem);
+  font-weight: 800;
+  line-height: .9;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  font-variant-numeric: tabular-nums;
+  position: relative;
+  isolation: isolate;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.5));
+  transition: text-shadow .6s, color .6s;
+}
+.stat-value.deaths { color: #ff3b3b; }
+.stat-value.injured { color: #ffb347; }
+.stat-card:hover .stat-value.deaths,.stat-card:focus-visible .stat-value.deaths {
+  text-shadow: 0 0 18px rgba(255,59,59,0.55),0 0 42px rgba(255,59,59,0.35);
+}
+.stat-card:hover .stat-value.injured,.stat-card:focus-visible .stat-value.injured {
+  text-shadow: 0 0 18px rgba(255,179,71,0.55),0 0 42px rgba(255,179,71,0.35);
+}
+.stat-disclaimer {
+  margin-top: 26px;
+  font-size: 11px;
+  line-height: 1.4;
+  opacity: .55;
+  max-width: 680px;
+}
+.focusable:focus-visible { outline: 2px solid #ff3b3b; outline-offset: 3px; }
+@media (max-width: 640px) {
+  .stat-card { padding: 22px 20px 26px; }
+  .stat-value { font-size: clamp(3.2rem,16vw,5.2rem); }
+  .casualty-section { margin-top: 54px; }
+}
