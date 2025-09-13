@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Header: React.FC = () => (
   <header>
@@ -38,6 +39,27 @@ const Header: React.FC = () => (
           <span className="badge">“Banana Republic”</span>
         </h1>
       </div>
+      <nav aria-label="Primary" className="main-nav">
+        <ul>
+          <li>
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
+              8th Sept 2025
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard"
+              className={({ isActive }) => (isActive ? "active" : undefined)}
+            >
+              Home
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
     </div>
   </header>
 );
