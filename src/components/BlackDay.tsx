@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CasualtyToll: React.FC = () => {
-  const deathsTarget = 19;
-  const injuredTarget = 300;
+  const deathsTarget = 50;
+  const injuredTarget = 1300;
 
   const prefersReduced = React.useMemo(
     () =>
@@ -92,7 +92,7 @@ const CasualtyToll: React.FC = () => {
       </div>
       <p className="stat-disclaimer">
         Figures are changing; for more accurate information, please do your own
-        research. These were the figures as of 09 Sept 2025. Every life lost and
+        research. These were the figures as of 13 Sept 2025. Every life lost and
         every injury matters; this memorial honors them without endorsing any
         form of violence.
       </p>
